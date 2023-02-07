@@ -20,12 +20,12 @@ public class BinaryTreeRepo implements ComponentsRepository<BinaryTreeComponent>
     private BinaryTreeComponent compressor3 = new BinaryTreeComponent( "Compressor-3", 250, 75, null, null);
     private BinaryTreeComponent source3 = new BinaryTreeComponent("Source-3", 50, 120, valve4, compressor3);
 
-    public Set<BinaryTreeComponent> fetchSources() {
+    public Set<BinaryTreeComponent> fetchInputComponents() {
         return Set.of(source1, source2, source3);
     }
 
-    public Optional<BinaryTreeComponent> fetchSource(String sourceName) {
-        for (BinaryTreeComponent component : fetchSources()) {
+    public Optional<BinaryTreeComponent> fetchComponentInput(String sourceName) {
+        for (BinaryTreeComponent component : fetchInputComponents()) {
             if (component.getName().equals(sourceName)){
                 return Optional.of(component);
             }

@@ -9,7 +9,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Set;
 
-public class ProductionNetworkSampleBT implements ProductionNetwork<BinaryTreeComponent> {
+public class ProductionNetworkBT implements ProductionNetwork<BinaryTreeComponent> {
     public Profile getProfile(BinaryTreeComponent source) {
         Queue<BinaryTreeComponent> queue = new LinkedList<>();
         queue.add(source);

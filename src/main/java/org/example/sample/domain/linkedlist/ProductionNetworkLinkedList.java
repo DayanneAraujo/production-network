@@ -6,7 +6,7 @@ import org.example.sample.domain.Profile;
 
 import java.util.*;
 
-public class ProductionNetworkSampleLL implements ProductionNetwork<LinkedListComponent> {
+public class ProductionNetworkLinkedList implements ProductionNetwork<LinkedListComponent> {
     @Override
     public Set<Profile> getAllProfiles(final Set<LinkedListComponent> sources) {
         var profiles = new HashSet<Profile>();

@@ -11,13 +11,13 @@ import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ProductionNetworkSampleTest {
+class ProductionNetworkLinkedListTest {
 
     @Test
     public void testSingleNode() {
         final String componentName = "Sink";
         var sink = new LinkedListComponent(componentName, null, 0, 100);
-        var productionNetwork = new ProductionNetworkSampleLL();
+        var productionNetwork = new ProductionNetworkLinkedList();
 
         Profile profile = productionNetwork.getProfile(sink);
 
@@ -32,9 +32,9 @@ class ProductionNetworkSampleTest {
         String expectedPath = "Source-1/Valve-1/Compressor-1/Gathering-Center-1/Sink";
 
         var sampleComponentsRepo = new LinkedListRepo();
-        Optional<LinkedListComponent> source = sampleComponentsRepo.fetchSource("Source-1");
+        Optional<LinkedListComponent> source = sampleComponentsRepo.fetchComponentInput("Source-1");
 
-        var productionNetwork = new ProductionNetworkSampleLL();
+        var productionNetwork = new ProductionNetworkLinkedList();
 
         if (source.isEmpty()) {
             fail();
@@ -53,9 +53,9 @@ class ProductionNetworkSampleTest {
     }
 
     @Test
-    public void testSmokeProductionFindsAllPaths() {
-        ProductionNetworkSampleLL productionNetwork = new ProductionNetworkSampleLL();
-        Set<Profile> profilesResult = productionNetwork.getAllProfiles(new LinkedListRepo().fetchSources());
+    public void testProductionFindsAllPaths() {
+        ProductionNetworkLinkedList productionNetwork = new ProductionNetworkLinkedList();
+        Set<Profile> profilesResult = productionNetwork.getAllProfiles(new LinkedListRepo().fetchInputComponents());
         Set<String> expectedPaths = getExpectedPaths();
 
         assertEquals(3, profilesResult.size());

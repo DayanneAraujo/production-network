@@ -49,7 +49,7 @@ public class LinkedListRepo implements ComponentsRepository<LinkedListComponent>
     }
 
     @Override
-    public Set<LinkedListComponent> fetchSources() {
+    public Set<LinkedListComponent> fetchInputComponents() {
         return Set.of(
                 this.source1,
                 this.source2,
@@ -58,60 +58,12 @@ public class LinkedListRepo implements ComponentsRepository<LinkedListComponent>
     }
 
     @Override
-    public Optional<LinkedListComponent> fetchSource(final String sourceName) {
-        for (LinkedListComponent source : this.fetchSources()) {
+    public Optional<LinkedListComponent> fetchComponentInput(final String sourceName) {
+        for (LinkedListComponent source : this.fetchInputComponents()) {
             if (source.getName().equals(sourceName)) {
                 return Optional.of(source);
             }
         }
         return Optional.empty();
-    }
-
-    public LinkedListComponent getSink() {
-        return sink;
-    }
-
-    public LinkedListComponent getGathering() {
-        return gathering;
-    }
-
-    public LinkedListComponent getCompressor1() {
-        return compressor1;
-    }
-
-    public LinkedListComponent getValve1() {
-        return valve1;
-    }
-
-    public LinkedListComponent getSource1() {
-        return source1;
-    }
-
-    public LinkedListComponent getCompressor2() {
-        return compressor2;
-    }
-
-    public LinkedListComponent getValve3() {
-        return valve3;
-    }
-
-    public LinkedListComponent getValve2() {
-        return valve2;
-    }
-
-    public LinkedListComponent getSource2() {
-        return source2;
-    }
-
-    public LinkedListComponent getCompressor3() {
-        return compressor3;
-    }
-
-    public LinkedListComponent getValve4() {
-        return valve4;
-    }
-
-    public LinkedListComponent getSource3() {
-        return source3;
     }
 }

@@ -2,7 +2,7 @@ package org.example.sample.domain.binarytree;
 
 import org.example.sample.domain.Coordinate;
 import org.example.sample.domain.Profile;
-import org.example.sample.domain.linkedlist.ProductionNetworkSampleLL;
+import org.example.sample.domain.linkedlist.ProductionNetworkLinkedList;
 import org.example.sample.infrastructure.BinaryTreeRepo;
 import org.example.sample.infrastructure.LinkedListRepo;
 import org.junit.jupiter.api.Test;
@@ -13,13 +13,13 @@ import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ProductionNetworkSampleTest {
+class ProductionNetworkTreeTest {
 
     @Test
     public void testSingleNode() {
         final String componentName = "Sink";
         var sink = new BinaryTreeComponent(componentName,0, 100, null, null);
-        var productionNetwork = new ProductionNetworkSampleBT();
+        var productionNetwork = new ProductionNetworkBT();
 
         Profile profile = productionNetwork.getProfile(sink);
 
@@ -34,9 +34,9 @@ class ProductionNetworkSampleTest {
         String expectedPath = "Source-1/Valve-1/Compressor-1/Gathering-Center-1/Sink";
 
         var sampleComponentsRepo = new BinaryTreeRepo();
-        Optional<BinaryTreeComponent> source = sampleComponentsRepo.fetchSource("Source-1");
+        Optional<BinaryTreeComponent> source = sampleComponentsRepo.fetchComponentInput("Source-1");
 
-        var productionNetwork = new ProductionNetworkSampleBT();
+        var productionNetwork = new ProductionNetworkBT();
 
         if (source.isEmpty()) {
             fail();
@@ -56,8 +56,8 @@ class ProductionNetworkSampleTest {
 
     @Test
     public void testSmokeProductionFindsAllPaths() {
-        ProductionNetworkSampleLL productionNetwork = new ProductionNetworkSampleLL();
-        Set<Profile> profilesResult = productionNetwork.getAllProfiles(new LinkedListRepo().fetchSources());
+        ProductionNetworkLinkedList productionNetwork = new ProductionNetworkLinkedList();
+        Set<Profile> profilesResult = productionNetwork.getAllProfiles(new LinkedListRepo().fetchInputComponents());
         Set<String> expectedPaths = getExpectedPaths();
 
         assertEquals(3, profilesResult.size());
