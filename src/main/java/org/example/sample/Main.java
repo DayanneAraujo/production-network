@@ -3,6 +3,7 @@ package org.example.sample;
 import org.example.sample.domain.Component;
 import org.example.sample.domain.ProductionNetwork;
 import org.example.sample.domain.Profile;
+import org.example.sample.domain.array.ArrayComponent;
 import org.example.sample.domain.array.ProductionNetworkArray;
 import org.example.sample.domain.binarytree.BinaryTreeComponent;
 import org.example.sample.domain.binarytree.ProductionNetworkBT;
@@ -24,7 +25,7 @@ public class Main {
         final var arrayRepo = new ArrayRepo();
         final var productionNetworkArray= new ProductionNetworkArray();
         
-        final Set<Component[]> componentsStructure = arrayRepo.fetchInputComponents();
+        final Set<ArrayComponent[]> componentsStructure = arrayRepo.fetchInputComponents();
         final Set<Profile> profiles = productionNetworkArray.getAllProfiles(componentsStructure);
 
         printProfiles(profiles);

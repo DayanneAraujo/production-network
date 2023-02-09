@@ -6,10 +6,16 @@ import java.util.Optional;
 
 public class LinkedListComponent extends Component {
     private final LinkedListComponent next;
+    private final double distance;
 
     public LinkedListComponent(String name, LinkedListComponent next, double distance, double temperature) {
-        super(name, distance, temperature);
+        super(name, temperature);
         this.next = next;
+        this.distance = distance;
+    }
+
+    public double getDistance() {
+        return distance;
     }
 
     public Optional<LinkedListComponent> getNext() {

@@ -1,6 +1,5 @@
 package org.example.sample.domain.array;
 
-import org.example.sample.domain.Component;
 import org.example.sample.domain.Coordinate;
 import org.example.sample.domain.Profile;
 import org.example.sample.infrastructure.ArrayRepo;
@@ -16,7 +15,7 @@ class ProductionNetworkArrayTest {
     @Test
     public void testSingleNode() {
         final String componentName = "Sink";
-        Component[] sink = {new Component(componentName, 0, 100)};
+        ArrayComponent[] sink = {new ArrayComponent(componentName, 0, 100)};
         var productionNetwork = new ProductionNetworkArray();
 
         Profile profile = productionNetwork.getProfile(sink);
@@ -31,16 +30,16 @@ class ProductionNetworkArrayTest {
     public void testSinglePathOnProductionNetwork() {
         String expectedPath = "Source-1/Valve-1/Compressor-1/Gathering-Center-1/Sink";
 
-        Component sink = new Component("Sink", 0, 65);
-        Component gathering = new Component( "Gathering-Center-1", 200, 100);
-        Component compressor1 = new Component("Compressor-1", 400, 95);
-        Component valve1 = new Component("Valve-1", 300, 130);
-        Component source1 = new Component("Source-1", 100, 100);
+        var sink = new ArrayComponent("Sink", 0, 65);
+        var gathering = new ArrayComponent( "Gathering-Center-1", 200, 100);
+        var compressor1 = new ArrayComponent("Compressor-1", 400, 95);
+        var valve1 = new ArrayComponent("Valve-1", 300, 130);
+        var source1 = new ArrayComponent("Source-1", 100, 100);
 
-        Component[] components = {source1, valve1, compressor1, gathering, sink};
+        ArrayComponent[] components = {source1, valve1, compressor1, gathering, sink};
 
         var repo = new ArrayRepo();
-        Set<Component[]> componentsStructure = repo.fetchInputComponents();
+        Set<ArrayComponent[]> componentsStructure = repo.fetchInputComponents();
 
         var productionNetwork = new ProductionNetworkArray();
         Profile profile = productionNetwork.getProfile(components);

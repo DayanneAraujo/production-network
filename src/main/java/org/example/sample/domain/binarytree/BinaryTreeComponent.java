@@ -5,6 +5,7 @@ import org.example.sample.domain.Component;
 import java.util.Optional;
 
 public class BinaryTreeComponent extends Component {
+    private final double distance;
     private BinaryTreeComponent pointerLeft;
     private BinaryTreeComponent pointerRight;
 
@@ -13,9 +14,14 @@ public class BinaryTreeComponent extends Component {
                                final double temperature,
                                final BinaryTreeComponent pointerLeft,
                                final BinaryTreeComponent pointerRight) {
-        super(name, distance, temperature);
+        super(name, temperature);
+        this.distance = distance;
         this.pointerLeft = pointerLeft;
         this.pointerRight = pointerRight;
+    }
+
+    public double getDistance() {
+        return distance;
     }
 
     public Optional<BinaryTreeComponent> getPointerLeft() {

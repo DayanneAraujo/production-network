@@ -1,6 +1,7 @@
 package org.example.sample.domain;
 
 import java.util.HashMap;
+import java.util.Objects;
 
 public class Profile {
     private final String path;
@@ -25,5 +26,18 @@ public class Profile {
                 "path='" + path + "',\n\n" +
                 "coordinates=\n" + coordinates + "\n" +
                 "}\n\n";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Profile profile = (Profile) o;
+        return Objects.equals(path, profile.path) && Objects.equals(coordinates, profile.coordinates);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(path, coordinates);
     }
 }

@@ -4,9 +4,9 @@ import org.example.sample.domain.*;
 
 import java.util.*;
 
-public class ProductionNetworkArray implements ProductionNetwork<Component[]> {
+public class ProductionNetworkArray implements ProductionNetwork<ArrayComponent[]> {
     @Override
-    public Profile getProfile(Component[] components) {
+    public Profile getProfile(ArrayComponent[] components) {
         final StringBuilder path = new StringBuilder();
         Component source = components[0];
 
@@ -17,7 +17,7 @@ public class ProductionNetworkArray implements ProductionNetwork<Component[]> {
 
 
         for (int index = 1; index < components.length; index++) {
-            Component component = components[index];
+            ArrayComponent component = components[index];
 
             path.append("/");
 
@@ -32,10 +32,10 @@ public class ProductionNetworkArray implements ProductionNetwork<Component[]> {
     }
 
     @Override
-    public Set<Profile> getAllProfiles(Set<Component[]> componentsStructure) {
+    public Set<Profile> getAllProfiles(Set<ArrayComponent[]> componentsStructure) {
         Set<Profile> profiles = new HashSet<>();
 
-        for (Component[] components : componentsStructure) {
+        for (ArrayComponent[] components : componentsStructure) {
             profiles.add(getProfile(components));
         }
 
